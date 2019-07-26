@@ -1,0 +1,17 @@
+
+FROM ubantu:18.04
+
+MAINTAINER ursbrchandra
+
+RUN yum -y update
+
+RUN yum -y install nginx 
+RUN yum -y install php 
+RUN yum -y install php-gd 
+RUN yum -y install php-mysql
+ADD code /usr/share/nginx/html
+EXPOSE 80
+
+ENV BACKENDLB=test
+
+CMD ["nginx", "-g", "daemon off;"]
